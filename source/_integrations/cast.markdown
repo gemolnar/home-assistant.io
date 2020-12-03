@@ -125,7 +125,7 @@ service: media_player.play_media
 data:
   entity_id: media_player.chromecast
   media_content_type: 'image/jpeg'
-  media_content_id: 'http://via.placeholder.com/1024x600.jpg/901010/FFFFFF/?text=Hello'
+  media_content_id: 'http://via.placeholder.com/1024x600.jpg/0B6B94/FFFFFF/?text=Hello,%20Home%20Assistant!'
 ```
 
 You can pass in extra media metadata, for example media title, artist, album name, etc that will be shown on the Chromecast display.
