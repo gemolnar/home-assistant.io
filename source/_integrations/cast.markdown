@@ -103,6 +103,20 @@ To cast media directly from a configured Plex server, set the fields [as documen
       media_content_type: movie
       media_content_id: 'plex://{"library_name": "Movies", "title": "Groundhog Day"}'
 ```
+### (Almost) any media
+
+Chromecast can play many modern [media (image/audio/video) formats](https://developers.google.com/cast/docs/media). As a rule of thumb, what a Chrome browser can play a Chromecast will be able to handle too. 
+
+The media needs to be accessible via HTTP(S). Chromecast does not support other protocols like DLNA or SMB file share.
+You can play streams like netradios or media from your local network with the `media_player.play_media` service, as long as they accessible via HTTP(S). You need to set the `media_content_id` to the media URL, `media_content_type` to 
+
+```yaml
+  service: media_player.play_media
+  data:
+    entity_id: media_player.chromecast
+    media_content_type: movie
+    media_content_id: 'plex://{"library_name": "Movies", "title": "Groundhog Day"}'
+```
 
 ## Advanced use
 
