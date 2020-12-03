@@ -136,6 +136,7 @@ For the possible metadata types and values check [google cast docs > MediaInform
 # Play a movie from the internet, with extra metadata provided:
 service: media_player.play_media
 data:
+  entity_id: media_player.chromecast
   media_content_type: 'video/mp4'
   media_content_id: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   extra: 
