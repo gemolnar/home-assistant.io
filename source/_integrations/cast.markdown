@@ -116,6 +116,7 @@ You can play streams like netradios or media from your local network with the `m
     entity_id: media_player.chromecast
     media_content_type: movie
     media_content_id: 'plex://{"library_name": "Movies", "title": "Groundhog Day"}'
+    
 ```
 
 ## Advanced use
