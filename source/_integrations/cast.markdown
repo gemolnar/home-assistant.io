@@ -103,21 +103,46 @@ To cast media directly from a configured Plex server, set the fields [as documen
       media_content_type: movie
       media_content_id: 'plex://{"library_name": "Movies", "title": "Groundhog Day"}'
 ```
-### (Almost) any media
+### Any media
 
-Chromecast can play many modern [media (image/audio/video) formats](https://developers.google.com/cast/docs/media). As a rule of thumb, what a Chrome browser can play a Chromecast will be able to handle too. 
+Chromecasts can play many modern [media (image/audio/video) formats](https://developers.google.com/cast/docs/media). As a rule of thumb, if a Chrome browser can play a media file a Chromecast will be able to handle that too.
 
-The media needs to be accessible via HTTP(S). Chromecast does not support other protocols like DLNA or SMB file share.
-You can play streams like netradios or media from your local network with the `media_player.play_media` service, as long as they accessible via HTTP(S). You need to set the `media_content_id` to the media URL, `media_content_type` to 
+The media needs to be accessible via HTTP(S). Chromecast devices does not support other protocols like DLNA or playback from an SMB file share.
+You can play MP3 streams like netradios or media from your local network with the `media_player.play_media` service, as long as the media is accessible via HTTP(S). You need to set the `media_content_id` to the media URL and `media_content_type` to a matching content type.
 
 ```yaml
-  service: media_player.play_media
-  data:
-    entity_id: media_player.chromecast
-    media_content_type: movie
-    media_content_id: 'plex://{"library_name": "Movies", "title": "Groundhog Day"}'
-    
+# Play a video file from the local network
+service: media_player.play_media
+data:
+  entity_id: media_player.chromecast
+  media_content_type: '!!!!!!!!!!!!!!!'
+  media_content_id: 'http://192.168.0.100/movies/sample-video.mkv'
 ```
+
+```yaml
+# Show an image
+service: media_player.play_media
+data:
+  entity_id: media_player.chromecast
+  media_content_type: 'image/jpeg'
+  media_content_id: 'http://via.placeholder.com/1024x600.jpg/901010/FFFFFF/?text=Hello'
+```
+
+You can pass in extra media metadata, for example media title, artist, album name, etc that will be shown on the Chromecast display.
+For the possible metadata types check [google cast docs > MediaInformation > metadata field](https://developers.google.com/cast/docs/reference/messages#MediaInformation).
+
+```yaml
+# Play a netradio, with extra metadata provided:
+service: media_player.play_media
+data:
+  entity_id: media_player.chromecast
+  media_content_type: '!!!!!!!!!!!!!!!'
+  media_content_id: 'http://192.168.0.100/movies/sample-video.mkv'
+  extra: {
+  }
+```
+
+
 
 ## Advanced use
 
